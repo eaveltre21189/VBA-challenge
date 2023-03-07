@@ -64,6 +64,33 @@ Sub StockSummary()
             End If
         
         Next i
+        
+        Dim RngJ As Range
+        Dim RngK As Range
+        Dim ColorCell As Range
+        
+        Set RngJ = ws.Range("J2", ws.Range("J2").End(xlDown))
+        Set RngK = ws.Range("K2", ws.Range("K2").End(xlDown))
+        
+        For Each ColorCell In RngJ
+            If ColorCell.Value >= 0 Then
+                ColorCell.Interior.Color = RGB(198, 239, 206)
+            ElseIf ColorCell.Value < 0 Then
+                ColorCell.Interior.Color = RGB(255, 199, 206)
+            Else
+                ColorCell.Interior.ColorIndex = xlNone
+            End If
+        Next
+        
+        For Each ColorCell In RngK
+            If ColorCell.Value >= 0 Then
+                ColorCell.Interior.Color = RGB(198, 239, 206)
+            ElseIf ColorCell.Value < 0 Then
+                ColorCell.Interior.Color = RGB(255, 199, 206)
+            Else
+                ColorCell.Interior.ColorIndex = xlNone
+            End If
+        Next
     
     Next ws
 
